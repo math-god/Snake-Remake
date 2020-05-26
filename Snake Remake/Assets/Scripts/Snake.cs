@@ -306,7 +306,6 @@ public class Snake : MonoBehaviour {
     //Death from wall
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        
         state = State.Dead;
         AGameOver();
     }//Game Over Button Activate

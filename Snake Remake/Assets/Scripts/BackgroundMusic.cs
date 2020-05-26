@@ -6,16 +6,17 @@ public class BackgroundMusic : MonoBehaviour
 {
     public AudioSource bmusic;
     private IEnumerator coroutine;
-
-
+    
     private void Start()
     {
-        bmusic = GetComponent<AudioSource>();
-        bmusic.Play();
-        coroutine = replayAudio(96f);
-        StartCoroutine(coroutine);
-        DontDestroyOnLoad(this);
-
+        if (GameObject.FindGameObjectsWithTag("Bmusic").Length == 1) 
+        {
+            bmusic = GetComponent<AudioSource>();
+            bmusic.Play();
+            coroutine = replayAudio(96f);
+            StartCoroutine(coroutine);
+            DontDestroyOnLoad(this);
+        }
     }
 
     private IEnumerator replayAudio(float waitTime)
@@ -23,4 +24,5 @@ public class BackgroundMusic : MonoBehaviour
         yield return new WaitForSeconds(waitTime);
         bmusic.Play();
     }
+   
 }
